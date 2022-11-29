@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Inicio Sesión</title>
+  <title>Registro de Servicios</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
@@ -24,7 +24,7 @@
       <form method="post" action="<%=request.getContextPath()%>/?action=login">
 
         <br>
-        <h4 class="d-flex justify-content-center" style="color:white">Registro</h4>
+        <h4 class="d-flex justify-content-center" style="color:white">Registro de Servicios</h4>
         <div class="form-floating mb-1">
           <input name="user" type="text" class="form-control" id="floatingInput1" placeholder="User">
           <label for="floatingInput1">Nombre</label>
