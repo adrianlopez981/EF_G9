@@ -27,7 +27,7 @@
                 <h4 class="d-flex justify-content-center" style="color:white">Iniciar Sesión</h4>
                 <div class="form-floating mb-3">
                     <input name="user" type="text" class="form-control" id="floatingInput1" placeholder="User">
-                    <label for="floatingInput1">Usuario</label>
+                    <label for="floatingInput1">Correo</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input name="pass" type="password" class="form-control" id="floatingInput2" placeholder="Password">
