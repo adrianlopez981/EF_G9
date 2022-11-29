@@ -11,6 +11,19 @@
 
 <body background="background.jpg">
 <br><br><br><br><br><br>
+<nav class="navbar navbar-expand-lg" style="background-color: #458BCA;" aria-label="Eighth navbar example">
+  <div class="container">
+      <ul class="nav col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2"><b style="color:#1A3B85"><%=userlogged.getNombre() + userlogged.getApellido()%></b></a></li>
+      </ul>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <a class="dropdown-item" href="<%=request.getContextPath()%>/ServletInicio?action=logout"><u style="color:rgb(35,30,30)"> <b>Cerrar sesión> </b></u></a>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
 <div class="modal-dialog modalCenter">
   <div class="modal-content" style="background: #000000">
     <div class="modal-body" >
