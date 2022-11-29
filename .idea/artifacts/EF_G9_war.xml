@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="EF_G9-1.0-SNAPSHOT.war">
+    <root id="archive" name="FinalFantasy-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="EF_G9:war exploded" />
     </root>
   </artifact>
