@@ -33,19 +33,7 @@
                     <input name="pass" type="password" class="form-control" id="floatingInput2" placeholder="Password">
                     <label for="floatingInput2">Contraseña</label>
                 </div>
-                <%if(session.getAttribute("msg")!=null){%>
-                <%if(session.getAttribute("msg").equals("errorNumero")){%>
-                <div class="text-danger mb-2">DNI y Contraseña deben ser números</div>
-                <%}%>
-                <%if(session.getAttribute("msg").equals("errorSQL")){%>
-                <div class="text-danger mb-2">Error de conexión con la base de Datos</div>
-                <%}%>
-                <%if(session.getAttribute("msg").equals("errorDNItam")){%>
-                <div class="text-danger mb-2">El DNI debe ser de 8 dígitos</div>
-                <%}%>
-                <%if(session.getAttribute("msg").equals("noExiste")){%>
-                <div class="text-danger mb-2">Usuario y/o Contraseña incorrectos</div>
-                <%}%>
+
                 <%session.removeAttribute("msg"); session.invalidate();%>
                 <%}%>
 
