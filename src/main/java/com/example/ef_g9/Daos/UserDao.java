@@ -3,10 +3,8 @@ package com.example.ef_g9.Daos;
 import com.example.ef_g9.Beans.TipoUsuario;
 import com.example.ef_g9.Beans.Usuario;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class UserDao extends BaseDao {
 
@@ -14,7 +12,7 @@ public class UserDao extends BaseDao {
 
         Usuario usuario = null;
 
-        String sql = "SELECT * FROM usuario_credentials WHERE email = ? AND password_hashed = SHA2(?,256)";
+        String sql = "SELECT * FROM usuario_credentials WHERE correo = ? AND contraseña_hashed = SHA2(?,512)";
 
         try (Connection conn = this.getConection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -40,7 +38,7 @@ public class UserDao extends BaseDao {
 
         Usuario usuario = null;
 
-        String sql = "SELECT * FROM usuario e WHERE idUsuario = ?";
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ?";
 
         try (Connection conn = this.getConection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -71,4 +69,8 @@ public class UserDao extends BaseDao {
     }
 
 
+
+
 }
+
+
