@@ -2,63 +2,57 @@ package com.example.ef_g9.Daos;
 
 
 import com.example.ef_g9.Beans.ServicioxUsuario;
-import com.example.ef_g9.Beans.TipoUsuario;
+import com.example.ef_g9.Beans.TipoServicio;
 import com.example.ef_g9.Beans.Usuario;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
+
 
 public class ServicioDao extends BaseDao {
 
-    public ArrayList<ServicioxUsuario> listarEmpleados() {
+    public ArrayList<ServicioxUsuario> listarServicios(int idusuario) {
         ArrayList<ServicioxUsuario> listaServicios = new ArrayList<>();
 
+        String sql = "select idServicioxUsuario, IdNuevoTipoServicio," +
+                " nombre as NombreServicio, Usuario_idUsuario, borradorLogico" +
+                " from nuevotiposervicio_has_usuario join nuevotiposervicio" +
+                " on NuevoTipoServicio_idNuevoTipoServicio = idNuevoTipoServicio" +
+                " where Usuario_idUsuario = ? and borradorLogico = 0";
+
         try (Connection conn = this.getConection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM employees e \n"
-                     + "left join jobs j on (j.job_id = e.job_id) \n"
-                     + "left join departments d on (d.department_id = e.department_id)\n"
-                     + "left  join employees m on (e.manager_id = m.employee_id)");) {
-
-            while (rs.next()) {
-                ServicioxUsuario servicio = new ServicioxUsuario();
-                servicio.setIdUsuario(rs.getInt(1));
-                servicio.setNombre(rs.getString(2));
-                servicio.setApellido(rs.getString(3));
-                servicio.setCorreo(rs.getString(4));
-                servicio.setContrasena(rs.getString(5));
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+        ) {
+            pstmt.setInt(1, idusuario);
 
 
-                TipoUsuario tipoUsuario = new TipoUsuario();
-                tipoUsuario.setIdTipoUsuario(rs.getInt(6));
-                usuario.setTipoUsuario(tipoUsuario);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    ServicioxUsuario servicioxUsuario = new ServicioxUsuario();
+                    servicioxUsuario.setIdServicioxUsuario(rs.getInt(1));
+                    servicioxUsuario.setBorradorLogico((char) rs.getInt(5));
+
+                    TipoServicio tipoServicio2 = new TipoServicio();
+                    tipoServicio2.setIdTipoServicio(rs.getInt(2));
+                    servicioxUsuario.setTipoServicio(tipoServicio2);
+
+                    Usuario usuario2 = new Usuario();
+                    usuario2.setIdUsuario(rs.getInt(4));
+                    servicioxUsuario.setUsuario(usuario2);
+
+                    listaServicios.add(servicioxUsuario);
 
 
-
-                if (rs.getInt("e.manager_id") != 0) {
-                    Employee manager = new Employee();
-                    manager.setEmployeeId(rs.getInt("e.manager_id"));
-                    manager.setFirstName(rs.getString("m.first_name"));
-                    manager.setLastName(rs.getString("m.last_name"));
-                    employee.setManager(manager);
                 }
-
-                if (rs.getInt("e.department_id") != 0) {
-                    Department department = new Department();
-                    department.setDepartmentId(rs.getInt(11));
-                    department.setDepartmentName(rs.getString("d.department_name"));
-                    employee.setDepartment(department);
-                }
-
-                listaServicios.add(servicio);
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         return listaServicios;
+
     }
+
+
 }
+

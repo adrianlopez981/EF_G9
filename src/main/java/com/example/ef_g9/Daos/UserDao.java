@@ -21,7 +21,7 @@ public class UserDao extends BaseDao {
 
             try (ResultSet rs = pstmt.executeQuery();) {
                 if (rs.next()) {
-                    int idUsuario = rs.getInt(1);
+                    int idUsuario = rs.getInt("usuario_idUsuario");
                     usuario = this.obtenerEmpleado(idUsuario);
                 }
             }

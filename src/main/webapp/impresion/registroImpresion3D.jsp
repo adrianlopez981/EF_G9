@@ -16,7 +16,7 @@
 
     }
 </style>
-<body background="background.jpg">
+<body background="../background.jpg">
 <br><br><br><br><br><br>
 <div class="modal-dialog modalCenter">
     <div class="modal-content" style="background: #000000">

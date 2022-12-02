@@ -53,9 +53,10 @@ public class SessionServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
 
+
                 /*session.setMaxInactiveInterval(10 * 60); // 10 minutos*/
 
-                response.sendRedirect(request.getContextPath() + "/UserServlet");
+                response.sendRedirect(request.getContextPath() + "/ServicioServlet?id="+usuario.getIdUsuario());
             } else {
                 request.setAttribute("err", "El usuario o password no existen");
                 RequestDispatcher view = request.getRequestDispatcher("index.jsp");
